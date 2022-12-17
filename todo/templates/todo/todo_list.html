@@ -9,14 +9,19 @@
 <body>
     <h1>Things I need to do</h1>
     <table>
-    <p>{% for item in items %}
+    <p>{% for item in items %}                 <!--- the item part could be peanut it doesnt matter  -->
         <tr>
+            {% if item.done %}
+            <td><strike>{{ item.name }}</strike></td>
+            {% else %}
             <td>{{ item.name }}</td>
-            <td>{{ item.done }}</td>
-
+            {% endif %}
         </tr>
+        {% empty %}                                     <!-- this display a message when no records found-->
+        <tr><td>you have nothing to do</td></tr>
         {% endfor %}
     </table>
+    <a href="/add">Add an Item</a>
     </p>
 </body>
 </html>
