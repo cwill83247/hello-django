@@ -11,19 +11,7 @@
 
     <form method="POST" action="add">    <!--- action is url its gettign sent to via urls.py which inturn points to a function wothon views.py "add_item" which then does x,y and z and returns a web page-->
         {% csrf_token %}                  <!-- DJANGO Specific and is required for forms when we POST-->
-        <div>
-            <p>
-            <label for="id_name">Name:</label>
-            <input type ="text" id="id_name" name="item_name" />      <!--- name is what is referenced within FUNCTION  -->
-            </p>                                                     <!-- id is what is used to identify on page so CSS and Label can be applied for -->   
-        </div>
-
-        <div>
-            <p>
-                <label for="id_done">Done:</label>
-                <input type ="checkbox" id="id_done" name="done" /> 
-                </p>
-        </div>
+        {{ form.as_p }}                          <!-- using the DJANGO forms   .as_p put it into a paragraph -->
         <div>
             <p>
                 <button type="submit">Add Item</button>
