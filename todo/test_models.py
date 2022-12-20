@@ -9,5 +9,7 @@ class TestModels(TestCase):
         item = Item.objects.create(name='creating another test item')
         self.assertFalse(item.done)
 
-    
-            
+    def test_item_strings_method_returns_name(self):
+        item = Item.objects.create(name='creating another test item')
+        self.assertEqual(str(item), 'creating another test item')
+

@@ -43,6 +43,11 @@ class TestViews(TestCase):
         updated_item = Item.objects.get(id=item.id)
         self.assertFalse(updated_item.done)
 
+    def test_can_edititem(self):
+        item = Item.objects.create(name='Using test to create an item')
+        response = self.client.post(f'/edit/{item.id}', {'name': 'changing name in test'})  
+        self.assertRedirects(response, '/')  
+        updated_item = Item.objects.get(id=item.id)
+        self.assertEqual(updated_item_name, 'changing name in test')
 
 
-            
