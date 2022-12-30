@@ -27,16 +27,14 @@ if os.path.exists("env.py"):
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-8&5ejc6fq@uthsuyi3$eki0ymxhn(i6-8k5-it+j409_u0#g=w'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-8&5ejc6fq@uthsuyi3$eki0ymxhn(i6-8k5-it+j409_u0#g=w')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['cwill83247-django-to-do.herokuapp.com']
-
+ALLOWED_HOSTS = [os.environ.get('HEROKU_HOSTNAME')]  
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
